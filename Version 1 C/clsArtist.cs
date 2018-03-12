@@ -3,6 +3,7 @@ using System;
 namespace Version_1_C
 {
     [Serializable()] 
+    //good memes
     public class clsArtist
     {
         private string name;
