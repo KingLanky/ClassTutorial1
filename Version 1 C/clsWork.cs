@@ -6,8 +6,8 @@ namespace Version_1_C
     public abstract class clsWork
     {
         protected string _Name;
-        protected DateTime theDate = DateTime.Now;
-        protected decimal theValue;
+        protected DateTime _date = DateTime.Now;
+        protected decimal _value;
 
         public clsWork()
         {
@@ -43,7 +43,7 @@ namespace Version_1_C
 
         public override string ToString()
         {
-            return _Name + "\t" + theDate.ToShortDateString();  
+            return _Name + "\t" + _date.ToShortDateString();  
         }
         
         public string GetName()
@@ -53,12 +53,12 @@ namespace Version_1_C
 
         public DateTime GetDate()
         {
-            return theDate;
+            return _date;
         }
 
         public decimal GetValue()
         {
-            return theValue;
+            return _value;
         }
     }
 }
