@@ -1,48 +1,39 @@
 using System;
 
-namespace Version_1_C
-{
-    [Serializable()] 
-    //good memes
-    public class clsArtist
-    {
-        private string name;
-        private string speciality;
-        private string phone;
-        
-        private decimal theTotalValue;
+namespace Version_1_C {
+    [Serializable()]
+    public class clsArtist {
+        private string _name;
+        private string _speciality;
+        private string _phone;
 
-        private clsWorksList theWorksList;
-        private clsArtistList theArtistList;
-        
-        private static frmArtist artistDialog = new frmArtist();
-        private byte sortOrder;
+        private decimal _totalValue;
 
-        public clsArtist(clsArtistList prArtistList)
-        {
-            theWorksList = new clsWorksList();
-            theArtistList = prArtistList;
+        private clsWorksList _worksList;
+        private clsArtistList _artistList;
+
+        private static frmArtist _artistDialog = new frmArtist();
+
+        public clsArtist(clsArtistList prArtistList) {
+            _worksList = new clsWorksList();
+            _artistList = prArtistList;
             EditDetails();
         }
-        
-        public void EditDetails()
-        {
-            artistDialog.SetDetails(name, speciality, phone, sortOrder, theWorksList, theArtistList);
-            if (artistDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                artistDialog.GetDetails(ref name, ref speciality, ref phone, ref sortOrder);
-                theTotalValue = theWorksList.GetTotalValue();
+
+        public void EditDetails() {
+            _artistDialog.SetDetails(_name, _speciality, _phone,  _worksList, _artistList);
+            if (_artistDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+                _artistDialog.GetDetails(ref _name, ref _speciality, ref _phone);
+                _totalValue = _worksList.GetTotalValue();
             }
         }
 
-        public string GetKey()
-        {
-            return name;
+        public string GetKey() {
+            return _name;
         }
 
-        public decimal GetWorksValue()
-        {
-            return theTotalValue;
+        public decimal GetWorksValue() {
+            return _totalValue;
         }
     }
 }

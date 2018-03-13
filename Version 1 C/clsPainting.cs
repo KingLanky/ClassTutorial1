@@ -1,28 +1,23 @@
 using System;
 using System.Windows.Forms;
 
-namespace Version_1_C
-{
-    [Serializable()] 
-    public class clsPainting : clsWork
-    {
-        private float theWidth;
-        private float theHeight;
-        private string theType;
+namespace Version_1_C {
+    [Serializable()]
+    public class clsPainting : clsWork {
+        private float _width;
+        private float _height;
+        private string _type;
 
         [NonSerialized()]
         private static frmPainting paintDialog;
 
-        public override void EditDetails()
-        {
-            if (paintDialog == null)
-            {
+        public override void EditDetails() {
+            if (paintDialog == null) {
                 paintDialog = new frmPainting();
             }
-            paintDialog.SetDetails(_Name, theDate, theValue, theWidth, theHeight, theType);
-            if(paintDialog.ShowDialog() == DialogResult.OK)
-            {
-               paintDialog.GetDetails(ref _Name, ref theDate, ref theValue, ref theWidth, ref theHeight, ref theType);
+            paintDialog.SetDetails(_Name, _date, _value, _width, _height, _type);
+            if (paintDialog.ShowDialog() == DialogResult.OK) {
+                paintDialog.GetDetails(ref _Name, ref _date, ref _value, ref _width, ref _height, ref _type);
             }
         }
     }
