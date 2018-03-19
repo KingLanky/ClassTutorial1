@@ -19,8 +19,8 @@ namespace Version_1_C {
         public void NewArtist() {
             clsArtist lcArtist = new clsArtist(this);
             try {
-                if (lcArtist.GetKey() != "") {
-                    Add(lcArtist.GetKey(), lcArtist);
+                if (lcArtist.Name != "") {
+                    Add(lcArtist.Name, lcArtist);
                     MessageBox.Show("Artist added!");
                 }
             } catch (Exception) {
@@ -31,7 +31,7 @@ namespace Version_1_C {
         public decimal GetTotalValue() {
             decimal lcTotal = 0;
             foreach (clsArtist lcArtist in Values) {
-                lcTotal += lcArtist.GetWorksValue();
+                lcTotal += lcArtist.TotalValue;
             }
             return lcTotal;
         }

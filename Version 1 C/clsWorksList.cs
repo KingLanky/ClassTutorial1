@@ -38,7 +38,7 @@ namespace Version_1_C {
         public decimal GetTotalValue() {
             decimal lcTotal = 0;
             foreach (clsWork lcWork in this) {
-                lcTotal += lcWork.GetValue();
+                lcTotal += lcWork.Value;
             }
             return lcTotal;
         }

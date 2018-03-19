@@ -9,16 +9,16 @@ namespace Version_1_C {
         private string _type;
 
         [NonSerialized()]
-        private static frmPainting paintDialog;
+        private static frmPainting _PaintDialog;
+
+        public float Width { get => _width; set => _width = value; }
+        public float Height { get => _height; set => _height = value; }
+        public string Type { get => _type; set => _type = value; }
 
         public override void EditDetails() {
-            if (paintDialog == null) {
-                paintDialog = new frmPainting();
-            }
-            paintDialog.SetDetails(_Name, _date, _value, _width, _height, _type);
-            if (paintDialog.ShowDialog() == DialogResult.OK) {
-                paintDialog.GetDetails(ref _Name, ref _date, ref _value, ref _width, ref _height, ref _type);
-            }
+            if (_PaintDialog == null)
+                _PaintDialog = new frmPainting();
+            _PaintDialog.SetDetails(this);
         }
     }
 }

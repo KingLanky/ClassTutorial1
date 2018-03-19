@@ -8,16 +8,15 @@ namespace Version_1_C {
         private string _material;
 
         [NonSerialized()]
-        private static frmSculpture sculptDialog;
+        private static frmSculpture _SculptDialog;
+
+        public float Weight { get => _weight; set => _weight = value; }
+        public string Material { get => _material; set => _material = value; }
 
         public override void EditDetails() {
-            if (sculptDialog == null) {
-                sculptDialog = new frmSculpture();
-            }
-            sculptDialog.SetDetails(_Name, _date, _value, _weight, _material);
-            if (sculptDialog.ShowDialog() == DialogResult.OK) {
-                sculptDialog.GetDetails(ref _Name, ref _date, ref _value, ref _weight, ref _material);
-            }
+            if (_SculptDialog == null)
+                _SculptDialog = new frmSculpture();
+            _SculptDialog.SetDetails(this);
         }
     }
 }

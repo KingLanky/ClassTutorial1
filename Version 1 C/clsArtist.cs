@@ -14,6 +14,13 @@ namespace Version_1_C {
 
         private static frmArtist _artistDialog = new frmArtist();
 
+        public string Name { get => _name; set => _name = value; }
+        public string Speciality { get => _speciality; set => _speciality = value; }
+        public string Phone { get => _phone; set => _phone = value; }
+        public decimal TotalValue { get => _totalValue;}
+        public clsWorksList WorksList { get => _worksList;}
+        public clsArtistList ArtistList { get => _artistList;}
+
         public clsArtist(clsArtistList prArtistList) {
             _worksList = new clsWorksList();
             _artistList = prArtistList;
@@ -21,19 +28,20 @@ namespace Version_1_C {
         }
 
         public void EditDetails() {
-            _artistDialog.SetDetails(_name, _speciality, _phone,  _worksList, _artistList);
-            if (_artistDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
-                _artistDialog.GetDetails(ref _name, ref _speciality, ref _phone);
-                _totalValue = _worksList.GetTotalValue();
-            }
+            _artistDialog.SetDetails(this);
+            _totalValue = _worksList.GetTotalValue();
         }
 
-        public string GetKey() {
-            return _name;
+        public bool IsDuplicate(string prArtistName) {
+            return _artistList.ContainsKey(prArtistName);
         }
 
-        public decimal GetWorksValue() {
-            return _totalValue;
-        }
+        //public string GetKey() {
+        //    return _name;
+        //}
+
+        //public decimal GetWorksValue() {
+        //    return _totalValue;
+        //}
     }
 }
