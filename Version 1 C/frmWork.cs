@@ -24,13 +24,6 @@ namespace Version_1_C
             ShowDialog();
         }
 
-        //public void GetDetails(ref string prName, ref DateTime prDate, ref decimal prValue)
-        //{
-        //    prName = txtName.Text;
-        //    prDate = Convert.ToDateTime(txtCreation.Text);
-        //    prValue = Convert.ToDecimal(txtValue.Text);
-        //}
-
         private void btnOK_Click(object sender, EventArgs e)
         {
             if (isValid() == true)

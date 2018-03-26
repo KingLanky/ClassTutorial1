@@ -2,7 +2,7 @@ using System;
 
 namespace Version_1_C
 {
-    [Serializable()] 
+    [Serializable()]
     public abstract class clsWork
     {
         private string name;
@@ -20,36 +20,22 @@ namespace Version_1_C
 
         public abstract void EditDetails();
 
-         public static clsWork NewWork()
-         {
-             char lcReply;
-             InputBox inputBox = new InputBox("Enter P for Painting, S for Sculpture and H for Photograph");
-             //inputBox.ShowDialog();
-             //if (inputBox.getAction() == true)
-             if (inputBox.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-             {
-                 lcReply = Convert.ToChar(inputBox.getAnswer());
-
-                 switch (char.ToUpper(lcReply))
-                 {
-                     case 'P': return new clsPainting();
-                     case 'S': return new clsSculpture();
-                     case 'H': return new clsPhotograph();
-                     default: return null;
-                 }
-             }
-             else
-             {
-                 inputBox.Close();
-                 return null;
-             }
-         }
+        public static clsWork NewWork(char prChoice)
+        {
+            switch (char.ToUpper(prChoice))
+            {
+                case 'P': return new clsPainting();
+                case 'S': return new clsSculpture();
+                case 'H': return new clsPhotograph();
+                default: return null;
+            }
+        }
 
         public override string ToString()
         {
-            return Name + "\t" + Date.ToShortDateString();  
+            return Name + "\t" + Date.ToShortDateString();
         }
-        
+
         //public string GetName()
         //{
         //    return Name;
